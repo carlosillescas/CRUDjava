@@ -145,6 +145,8 @@ public class sistema extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
+        jPanel1.setBackground(new java.awt.Color(0, 255, 204));
+
         jtablaAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
