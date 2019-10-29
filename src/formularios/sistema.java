@@ -49,6 +49,8 @@ public class sistema extends javax.swing.JFrame {
         txtCalificacion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtNuevo = new javax.swing.JButton();
+        txtID = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtablaAlumnos = new javax.swing.JTable();
@@ -58,8 +60,6 @@ public class sistema extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 153));
 
         jLabel1.setText("Nombre del Alumno:");
-
-        txtNombres.setEnabled(false);
 
         jLabel2.setText("Apellidos del Alumno:");
 
@@ -79,6 +79,11 @@ public class sistema extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Curso:");
 
@@ -91,6 +96,8 @@ public class sistema extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("ID:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -98,32 +105,41 @@ public class sistema extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNuevo))
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtCalificacion, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtCurso, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtApellidos, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtNombres, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnGuardar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEditar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEliminar))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtCalificacion, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtCurso, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtApellidos, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtNombres, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(txtNuevo)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -158,6 +174,7 @@ public class sistema extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtablaAlumnos.setEnabled(false);
         jtablaAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtablaAlumnosMouseClicked(evt);
@@ -171,7 +188,7 @@ public class sistema extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addGap(73, 73, 73))
         );
         jPanel1Layout.setVerticalGroup(
@@ -210,6 +227,7 @@ public class sistema extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         insertarDatos();
+         mostrarDatos();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuevoActionPerformed
@@ -221,17 +239,26 @@ public class sistema extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int filaSelect = jtablaAlumnos.rowAtPoint(evt.getPoint());
-        
+        String id = (String) jtablaAlumnos.getValueAt(filaSelect, 0);
+        txtID.setText(id);
         txtNombres.setText(jtablaAlumnos.getValueAt(filaSelect, 1).toString());
         txtApellidos.setText(jtablaAlumnos.getValueAt(filaSelect, 2).toString());
-        txtCurso.setText(jtablaAlumnos.getValueAt(filaSelect, 4).toString());
-        txtCalificacion.setText(jtablaAlumnos.getValueAt(filaSelect, 3).toString());
+        txtCurso.setText(jtablaAlumnos.getValueAt(filaSelect, 3).toString());
+        txtCalificacion.setText(jtablaAlumnos.getValueAt(filaSelect, 4).toString());
+        
     }//GEN-LAST:event_jtablaAlumnosMouseClicked
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         modificar();
+        mostrarDatos();
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        
+        eliminar(txtID.getText());
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     public void mostrarDatos()
     {
@@ -284,19 +311,42 @@ public class sistema extends javax.swing.JFrame {
     
         String SQL = "update alumnos set nombres =?, apellidos =?,materia=?, calificacion =? where idalumnos = ?";
         
-        int filaSelect = jtablaAlumnos.getSelectedRow();
-        String id = (String) jtablaAlumnos.getValueAt(filaSelect, 0);
+        //int filaSelect = jtablaAlumnos.getSelectedRow();
+        
+        
         PreparedStatement pst = con.prepareStatement(SQL);
         
         pst.setString(1, txtNombres.getText());
         pst.setString(2, txtApellidos.getText());
         pst.setString(3,txtCurso.getText());
         pst.setString(4, txtCalificacion.getText());
-        pst.setString(5, id);
+        pst.setString(5, txtID.getText());
         pst.execute();
         
         JOptionPane.showMessageDialog(null,"Registro Actualizado Exitosamente");
         
+    }catch (Exception e)
+    {
+        JOptionPane.showMessageDialog(null,"Error al Registrar");
+    }
+    }
+    
+     public void eliminar(String id){
+        
+    try{
+    
+        String SQL = " DELETE FROM  alumnos where idalumnos = ?";
+        
+        //int filaSelect = jtablaAlumnos.getSelectedRow();
+        
+        
+        PreparedStatement pst = con.prepareStatement(SQL);
+        
+        pst.setString(1, txtID.getText());        
+        pst.execute();
+        
+        JOptionPane.showMessageDialog(null,"Registro eliminar Exitosamente");
+        mostrarDatos();
     }catch (Exception e)
     {
         JOptionPane.showMessageDialog(null,"Error al Registrar");
@@ -370,6 +420,7 @@ public class sistema extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -377,6 +428,7 @@ public class sistema extends javax.swing.JFrame {
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCalificacion;
     private javax.swing.JTextField txtCurso;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JButton txtNuevo;
     // End of variables declaration//GEN-END:variables
